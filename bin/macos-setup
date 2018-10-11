@@ -1,0 +1,75 @@
+#!/usr/bin/env ruby
+class MacSetup
+
+  MAIN_HELP_BANNER = <<HEREDOC
+Commands to setup host machine
+
+Usage:
+  macos-setup [options] [COMMAND] [ARGS...]"
+  macos-setup -h|--help
+
+Options:
+  --verbose                 Show more output
+  -v, --version             Print version and exit
+
+Commands:
+  bootstrap           Bootstrap dependencies
+  update              Build or rebuild services
+
+HEREDOC
+
+  def initialize(args)
+    if args.empty? || (args[0] == "help" || args[0] == "-h") && args.length == 1
+      help(args)
+      return
+    end
+
+    if not respond_to? args[0]
+      help(args)
+      return
+    end
+
+    send(args.shift.to_sym, args)
+  end
+
+  def help(args)
+    puts MAIN_HELP_BANNER
+  end
+
+  def bootstrap(args)
+    bootstrap = <<HEREDOC
+## Install or Update Homebrew
+echo 'Installing or Updating Homebrew...'
+
+which -s brew
+if [[ $? != 0 ]] ; then
+    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+else
+    brew update
+fi
+echo "\n\n"
+ ## Install or Update Ansible
+echo 'Installing or Updating Ansible...'
+which -s ansible-playbook
+if [[ $? != 0 ]] ; then
+    brew install ansible
+else
+  echo 'Nothing to update'
+fi
+echo "\n\n"
+
+HEREDOC
+
+    system(bootstrap)
+  end
+
+  def update(args)
+    playbook = File.expand_path(File.join(__dir__, '..', 'macos-setup-playbook.yml'))
+    inventory = File.expand_path(File.join(__dir__, '..', 'inventory'))
+
+    system "ansible-playbook #{playbook} -i #{inventory} --ask-become-pass"
+    puts $?
+  end
+end
+
+MacSetup.new(ARGV) if __FILE__==$0
