@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+echo 'Checking out macOS Setup repo...'
+git clone https://github.com/bennoislost/macos-setup /usr/local/macos-setup 2>/dev/null
+
+echo 'Bootstrapping (will require your sudo password)...'
+echo -e "\n\n"
+/usr/local/macos-setup/bin/macos-setup bootstrap

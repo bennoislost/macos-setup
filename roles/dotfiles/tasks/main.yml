@@ -1,0 +1,5 @@
+- name: Create Brewfile
+  template:
+    src: Brewfile.j2
+    dest: ~/Brewfile_lol
+    mode: 0644
