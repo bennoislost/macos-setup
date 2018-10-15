@@ -10,10 +10,19 @@ if [[ $? != 0 ]]; then
     exit $?;
 fi
 
+
+install_dir="${HOME}/.macos-setup"
+
+if [ -d $install_dir ]
+then
+    echo "Installation directory ${install_dir} already exists"
+    exit 1
+fi
+
 echo 'Checking out macOS Setup repo...'
 echo -e "\n\n"
-git clone https://github.com/bennoislost/macos-setup /usr/local/macos-setup 2>/dev/null
+git clone https://github.com/bennoislost/macos-setup $install_dir 2>/dev/null
 
 echo 'Bootstrapping (will require your sudo password)...'
 echo -e "\n\n"
-/usr/local/macos-setup/bin/macos-setup bootstrap
+"${install_dir}/bin/macos-setup" bootstrap
