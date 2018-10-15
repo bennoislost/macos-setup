@@ -1,6 +1,17 @@
 #!/usr/bin/env bash
+echo 'Checking we can begin installation...'
+echo -e "\n\n"
+
+# is Xcode installed?
+xcode-select -p &> /dev/null
+
+if [[ $? != 0 ]]; then
+    echo "Is Xcode installed correctly?"
+    exit $?;
+fi
 
 echo 'Checking out macOS Setup repo...'
+echo -e "\n\n"
 git clone https://github.com/bennoislost/macos-setup /usr/local/macos-setup 2>/dev/null
 
 echo 'Bootstrapping (will require your sudo password)...'
