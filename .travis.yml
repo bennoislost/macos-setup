@@ -13,7 +13,8 @@ before_install:
   - sudo rm -rf /usr/local/Caskroom
   - sudo rm -rf /usr/local/bin/brew
   # Reinstall Ruby...
-  - rvm reinstall ruby-head --binary
+  - rvm install 2.3.1
+  - rvm --default use 2.3.1
 
 install:
   # bootstrap
