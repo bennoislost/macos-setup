@@ -74,7 +74,7 @@ HEREDOC
 
   def ci(args)
     requirements = File.expand_path(File.join(__dir__, '..', 'requirements.yml'))
-    playbook = File.expand_path(File.join(__dir__, '..', 'macos-setup-playbook.yml'))
+    playbook = File.expand_path(File.join(__dir__, '..', 'ci-playbook.yml'))
     inventory = File.expand_path(File.join(__dir__, '..', 'inventory'))
 
     system "ansible-galaxy install -r #{requirements}"

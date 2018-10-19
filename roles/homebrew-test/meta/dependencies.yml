@@ -1,0 +1,4 @@
+---
+dependencies:
+  - { role: geerlinguy.homebrew }
+  - { role: elliotweiser.osx-command-line-tools }
