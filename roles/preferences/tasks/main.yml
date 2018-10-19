@@ -1,0 +1,12 @@
+- name: Create Sublime Text preferences
+  template:
+    src: "Benno.sublime-settings.j2"
+    dest: "~/Library/Application\ Support/Sublime\ Text*/Packages/User/Preferences.sublime-settings"
+    mode: 0644
+
+- name: Create Spectacle preferences
+  template:
+    src: "Spectacle-Shortcuts.j2"
+    dest: "~/Library/Application\ Support/Spectacle/Shortcuts.json"
+    mode: 0644
+

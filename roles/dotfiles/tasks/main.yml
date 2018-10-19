@@ -2,8 +2,3 @@
 - name: Install dotfiles
   shell: >
          cd; curl -#L https://github.com/bennoislost/dotfiles/zipball/master | tar -xzv --strip-components 1 --exclude=README.md;
-
-- name: Run .macos dotfiles.
-  shell: >
-        cd; ./.macos
-  changed_when: false
