@@ -7,3 +7,15 @@ osx_image: xcode9.3
 install:
   # bootstrap
   - bin/macos-setup bootstrap
+  # syntax check
+  - ansible-playbook macos-setup-playbook.yml --syntax-check
+  # build
+  - bin/macos-setup update
+  # dempotence.
+  - idempotence=$(mktemp)
+  - bin/macos-setup update | tee -a ${idempotence}"
+  - >
+    tail ${idempotence}
+    | grep -q 'changed=0.*failed=0'
+    && (echo 'Idempotence test: pass' && exit 0)
+    || (echo 'Idempotence test: fail' && exit 1)
