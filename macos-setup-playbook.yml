@@ -1,11 +1,6 @@
 ---
 - hosts: all
   connection: local
-  vars_prompt:
-    - name: "mas_email"
-      prompt: "AppStore email address?"
-      private: no
   roles:
-    - { role: geerlingguy.mas }
     - { role: homebrew }
     - { role: geerlingguy.homebrew }

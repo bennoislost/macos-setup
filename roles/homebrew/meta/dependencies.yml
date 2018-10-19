@@ -1,5 +1,4 @@
 ---
 dependencies:
-  - { role: geerlinguy.mas }
   - { role: geerlinguy.homebrew }
   - { role: elliotweiser.osx-command-line-tools }
