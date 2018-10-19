@@ -9,6 +9,11 @@ install:
   - ./install
 
 before_script:
+  # https://github.com/Homebrew/homebrew-core/issues/26358
+  - brew upgrade python || true
+   # https://github.com/Homebrew/homebrew-core/issues/24978
+  - brew uninstall --force mercurial
+  - brew install mercurial
   # travis issue?
 #  - brew install python@2
 #  - brew install hg
