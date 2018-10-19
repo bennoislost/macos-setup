@@ -7,13 +7,20 @@ osx_image: xcode9.3
 install:
   # bootstrap
   - bin/macos-setup bootstrap
-  # build
+
+before_script:
+  - brew doctor
+
+script:
   - bin/macos-setup ci
   # idempotence
-  - idempotence=$(mktemp)
-  - "bin/macos-setup ci | tee -a ${idempotence}"
-  - >
-    tail ${idempotence}
-    | grep -q 'changed=0.*failed=0'
-    && (echo 'Idempotence test: pass' && exit 0)
-    || (echo 'Idempotence test: fail' && exit 1)
+  #- idempotence=$(mktemp)
+  #- "bin/macos-setup ci | tee -a ${idempotence}"
+  #- >
+  #  tail ${idempotence}
+  #  | grep -q 'changed=0.*failed=0'
+  #  && (echo 'Idempotence test: pass' && exit 0)
+  #  || (echo 'Idempotence test: fail' && exit 1)
+
+  after_script:
+  - ls -lah /Applications
