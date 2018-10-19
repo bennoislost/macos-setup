@@ -12,7 +12,10 @@ before_install:
   - sudo rm -rf /usr/local/Homebrew
   - sudo rm -rf /usr/local/Caskroom
   - sudo rm -rf /usr/local/bin/brew
+  # Prepare ruby version
+  - rbenv install 2.3.1
+  - rbenv global 2.3.1
 
 install:
   # bootstrap
-  - bin/macos-setup
+  - bin/macos-setup bootstrap
