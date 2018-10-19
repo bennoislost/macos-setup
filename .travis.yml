@@ -9,11 +9,12 @@ install:
   - bin/macos-setup bootstrap
 
 before_script:
-  - if (brew outdated | grep python > /dev/null); then brew upgrade python || brew link --overwrite python@2; fi
+  # travis issue?
+  - brew install python@2
   - if (brew outdated | grep openssl > /dev/null); then brew upgrade openssl || true; fi
-  - brew ls --verbose openssl
-  - brew update
+  - brew missing || true
   - brew doctor || true
+
 
 script:
   - bin/macos-setup ci
