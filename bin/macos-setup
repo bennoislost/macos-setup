@@ -69,7 +69,7 @@ HEREDOC
     inventory = File.expand_path(File.join(__dir__, '..', 'inventory'))
 
     system "ansible-galaxy install -r #{requirements}"
-    system "ansible-playbook #{playbook} -i #{inventory} --ask-become-pass --check -vv"
+    system "ansible-playbook #{playbook} -i #{inventory} --become -vv"
     puts $?
   end
 end
