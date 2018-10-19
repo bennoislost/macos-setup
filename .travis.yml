@@ -12,9 +12,9 @@ install:
   - ansible-playbook macos-setup-playbook.yml --syntax-check
   # build
   - bin/macos-setup update
-  # dempotence.
+  # idempotence
   - idempotence=$(mktemp)
-  - bin/macos-setup update | tee -a ${idempotence}"
+  - "bin/macos-setup update | tee -a ${idempotence}"
   - >
     tail ${idempotence}
     | grep -q 'changed=0.*failed=0'
