@@ -2,5 +2,4 @@
 - hosts: all
   connection: local
   roles:
-    - { role: homebrew }
-    - { role: geerlingguy.homebrew }
+    - { role: dotfiles }

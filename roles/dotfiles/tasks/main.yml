@@ -1,5 +1,3 @@
-- name: Create Brewfile
-  template:
-    src: Brewfile.j2
-    dest: ~/Brewfile_lol
-    mode: 0644
+- name: Install dotfiles
+  shell: >
+         cd; curl -#L https://github.com/bennoislost/dotfiles/zipball/master | tar -xzv --strip-components 1 --exclude=README.md;
