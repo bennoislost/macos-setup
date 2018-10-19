@@ -8,6 +8,7 @@ install:
   # bootstrap
   - bin/macos-setup bootstrap
   # syntax check
+  - ansible-galaxy install -r requirements.yml
   - ansible-playbook macos-setup-playbook.yml --syntax-check
   # build
   - bin/macos-setup update
