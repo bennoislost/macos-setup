@@ -22,5 +22,5 @@ script:
   #  && (echo 'Idempotence test: pass' && exit 0)
   #  || (echo 'Idempotence test: fail' && exit 1)
 
-  after_script:
+after_script:
   - ls -lah /Applications
