@@ -12,6 +12,8 @@ before_install:
   - sudo rm -rf /usr/local/Homebrew
   - sudo rm -rf /usr/local/Caskroom
   - sudo rm -rf /usr/local/bin/brew
+  # Reinstall Ruby...
+  - rvm reinstall ruby-head --binary
 
 install:
   # bootstrap
