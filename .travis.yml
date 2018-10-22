@@ -7,20 +7,11 @@ osx_image: xcode9.3
 install:
   # bootstrap
   - ./install
-
-before_script:
   # https://github.com/Homebrew/homebrew-core/issues/26358
   - brew upgrade python || true
-   # https://github.com/Homebrew/homebrew-core/issues/24978
+  # https://github.com/Homebrew/homebrew-core/issues/24978
   - brew uninstall --force mercurial
   - brew install mercurial
-  # travis issue?
-#  - brew install python@2
-#  - brew install hg
-#  - if (brew outdated | grep openssl > /dev/null); then brew upgrade openssl || true; fi
-#  - brew missing || true
-#  - brew doctor || true
-
 
 script:
   - bin/macos-setup ci
