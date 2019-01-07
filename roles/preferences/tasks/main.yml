@@ -1,7 +1,16 @@
+- name: Preference directories exist
+  file:
+    path: "{{ item }}"
+    state: directory
+    mode: 0755
+  with_items:
+    - "~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/"
+    - "~/Library/Application\ Support/Spectacle/"
+
 - name: Create Sublime Text preferences
   template:
     src: "Benno.sublime-settings.j2"
-    dest: "~/Library/Application\ Support/Sublime\ Text*/Packages/User/Preferences.sublime-settings"
+    dest: "~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/Preferences.sublime-settings"
     mode: 0644
 
 - name: Create Spectacle preferences
@@ -9,4 +18,3 @@
     src: "Spectacle-Shortcuts.j2"
     dest: "~/Library/Application\ Support/Spectacle/Shortcuts.json"
     mode: 0644
-
