@@ -6,3 +6,4 @@
     - { role: homebrew }
     - { role: geerlingguy.homebrew }
     - { role: preferences }
+    - { role: ssh }

@@ -1,0 +1,8 @@
+---
+- name: Create SSH directory
+  file:
+    path: "~/.ssh"
+    state: directory
+    mode: 0700
+
+- include: keys.yml

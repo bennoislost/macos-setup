@@ -48,7 +48,7 @@ else
     brew update
 fi
 echo "\n\n"
- ## Install or Update Ansible
+## Install or Update Ansible
 echo 'Installing or Updating Ansible...'
 which -s ansible-playbook
 if [[ $? != 0 ]] ; then
@@ -56,6 +56,12 @@ if [[ $? != 0 ]] ; then
 else
   echo 'Nothing to update'
 fi
+echo "\n\n"
+
+## Set ansible vault password
+echo 'Please set Ansible vault password in "ansible_vault_secret"'
+touch ansible_vault_secret
+
 echo "\n\n"
 
 HEREDOC

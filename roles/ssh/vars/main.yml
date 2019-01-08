@@ -1,0 +1,6 @@
+---
+macos_ssh_key_pairs:
+  - name: inviqa_jumpcloud.key
+    content: "KEY"
+  - name: inviqa_jumpcloud.pub
+    content: "PUB"
