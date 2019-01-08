@@ -5,4 +5,5 @@
     state: directory
     mode: 0700
 
+- include: config.yml
 - include: keys.yml
