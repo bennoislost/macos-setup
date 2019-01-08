@@ -2,6 +2,5 @@
   copy:
     dest: "~/.ssh/{{ item.name }}"
     content: "{{ item.content }}"
-    state: file
     mode: 0644
-  with_items: macos_ssh_key_pairs
+  with_items: "{{ macos_ssh_key_pairs }}"
