@@ -4,10 +4,24 @@
     state: directory
     mode: 0755
   with_items:
+    - "~/.composer"
+    - "~/.hem"
     - "~/Sites"
     - "~/Projects"
     - "~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/"
     - "~/Library/Application\ Support/Spectacle/"
+
+- name: Create hem config
+  copy:
+    dest: "~/.hem/config.yaml"
+    content: "{{ macos_hem_aws_properties }}"
+    mode: "600"
+
+- name: Create composer auth config
+  copy:
+    dest: "~/.composer/auth.json"
+    content: "{{ macos_composer_github_auth }}"
+    mode: "600"
 
 - name: Create Sublime Text preferences
   template:
