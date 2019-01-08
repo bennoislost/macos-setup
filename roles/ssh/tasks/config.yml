@@ -1,0 +1,5 @@
+- name: Install SSH config file
+  copy:
+    dest: "~/.ssh/config"
+    content: "{{ macos_ssh_config_file }}"
+    mode: 0644
