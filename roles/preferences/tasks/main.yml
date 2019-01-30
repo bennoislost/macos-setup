@@ -37,7 +37,7 @@
 
 - name: Create stunnel directory
   file:
-    path: "/etc/local/etc/stunnel"
+    path: "/usr/local/etc/stunnel"
     state: directory
     mode: 0775
 
