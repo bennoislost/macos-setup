@@ -43,7 +43,7 @@
 
 - name: Add stunnel foreground example file
   template:
-    src: "Stunnel-foreground.conf-example.j2"
+    src: "Stunnel-foreground.conf-sample.j2"
     dest: "/usr/local/etc/stunnel/stunnel-foreground.conf-sample"
     mode: 0644
 
