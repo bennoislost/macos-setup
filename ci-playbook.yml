@@ -3,6 +3,6 @@
   connection: local
   roles:
     - { role: dotfiles }
-    - { role: homebrew-test }
+    - { role: homebrew }
     - { role: geerlingguy.homebrew }
     - { role: preferences }
