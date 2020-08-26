@@ -1,0 +1,13 @@
+name: CI
+on:
+    push:
+        branches:
+            - feature/gh-actions
+
+jobs:
+    build:
+        runs-on: macOS-latest
+        steps:
+            - uses: actions/checkout@v2
+            - run: |
+                ./instiall
