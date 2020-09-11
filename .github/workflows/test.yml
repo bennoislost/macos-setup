@@ -18,3 +18,5 @@ jobs:
             - run: |
                 ./install
                 bin/macos-setup ci
+            - run: |
+                rm -f ansible_vault_secret
