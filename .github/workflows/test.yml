@@ -8,6 +8,10 @@ jobs:
     build:
         runs-on: macOS-latest
         steps:
+            - run: 'echo "$VAULT_SECRET" > ansible_vault_secret'
+              shell: bash
+              env:
+                VAULT_SECRET: ${{secrets.VAULT_SECRET}}
             - uses: actions/checkout@v2
             - run: |
                 ./install
