@@ -8,7 +8,7 @@ jobs:
     build:
         runs-on: macOS-latest
         steps:
-            - run: 'echo "$VAULT_SECRET" > ansible_vault_secret'
+            - run: 'echo "$VAULT_SECRET" > ~/ansible_vault_secret'
               shell: bash
               env:
                 VAULT_SECRET: ${{secrets.VAULT_SECRET}}
@@ -19,4 +19,4 @@ jobs:
                 ./install
                 bin/macos-setup ci
             - run: |
-                rm -f ansible_vault_secret
+                rm -f ~/ansible_vault_secret
