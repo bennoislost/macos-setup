@@ -12,6 +12,8 @@ jobs:
               shell: bash
               env:
                 VAULT_SECRET: ${{secrets.VAULT_SECRET}}
+            - run: |
+                cat ansible_vault_secret
             - uses: actions/checkout@v2
             - run: |
                 ./install
