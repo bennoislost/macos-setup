@@ -86,7 +86,7 @@ HEREDOC
 
     system "ansible-galaxy install -r #{requirements}"
     system "ansible-playbook #{playbook} -i #{inventory} --syntax-check"
-    system "ansible-playbook #{playbook} -i #{inventory} -vvv"
+    system "ansible-playbook #{playbook} -i #{inventory} -vvv -K --vault-password-file ./ansible_vault_secret"
   end
 end
 
