@@ -1,26 +1,11 @@
-#
-# {{ansible_managed}}
-#
-# brew bundle dump
-# cat Brewfile | grep ^tap | pbcopy
-# cat Brewfile | grep ^brew | pbcopy
-# cat Brewfile | grep ^cask | pbcopy
-#
-
-#
-# Taps
-#
 tap "eugenmayer/dockersync"
 tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/cask-versions"
 tap "homebrew/core"
 tap "homebrew/services"
+tap "inviqa/tools"
 tap "neovim/neovim"
-
-#
-# Brews
-#
 brew "openssl@1.1"
 brew "aircrack-ng"
 brew "libyaml"
@@ -73,8 +58,6 @@ brew "ngrep"
 brew "nmap"
 brew "php", restart_service: true
 brew "php@7.2"
-brew "php@7.3"
-brew "php@7.4"
 brew "pv"
 brew "pwgen"
 brew "qcachegrind"
@@ -85,21 +68,14 @@ brew "rsync"
 brew "shadowsocks-libev"
 brew "shellcheck"
 brew "sshuttle"
-brew "stunnel"
 brew "starship"
 brew "thefuck"
-brew "tmate"
 brew "tmux"
 brew "wget"
 brew "wireshark"
 brew "yarn"
 brew "youtube-dl"
 brew "eugenmayer/dockersync/unox"
-
-
-#
-# Casks
-#
 cask "alfred"
 cask "android-platform-tools"
 cask "brewservicesmenubar"
@@ -126,7 +102,7 @@ cask "ngrok"
 cask "numi"
 cask "opera"
 cask "phpstorm"
-cask "skype"
+cask "postman"
 cask "qr-journal"
 cask "shadowsocksx-ng"
 cask "slack"
@@ -140,7 +116,6 @@ cask "tableplus"
 cask "tinkerwell"
 cask "transmission"
 cask "tunnelblick"
-cask "typora"
 cask "tuple"
 cask "vagrant"
 cask "virtualbox"
@@ -149,3 +124,9 @@ cask "vlc"
 cask "whatsapp"
 cask "wireshark"
 cask "xquartz"
+mas "ColorSlurp", id: 1287239339
+mas "GarageBand", id: 682658836
+mas "Keynote", id: 409183694
+mas "LastPass", id: 926036361
+mas "Numbers", id: 409203825
+mas "Pages", id: 409201541
