@@ -52,14 +52,18 @@ jobs:
           ansible-galaxy install -r requirements.yml
 
       - name: Define Ansible Vault secret.
+        shell: bash
+        env:
+          VAULT_SECRET: ${{secrets.VAULT_SECRET}}
         run: |
           echo "$VAULT_SECRET" > ansible_vault_secret
-        shell: bash
-          env:
-            VAULT_SECRET: ${{secrets.VAULT_SECRET}}
 
       - name: Test the playbook's syntax.
         run: ansible-playbook macos-setup-playbook.yml --syntax-check
 
       - name: Test the playbook.
         run: bin/macos-setup update
+
+      - name: Remove Ansible Vault secret.
+        run: |
+          rm ansible_vault_secret
