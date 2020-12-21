@@ -59,7 +59,7 @@ jobs:
           echo "$VAULT_SECRET" > ansible_vault_secret
 
       - name: Test the playbook's syntax.
-        run: ansible-playbook macos-setup-playbook.yml --syntax-check
+        run: ansible-playbook macos-setup-playbook.yml --syntax-check --vault-password-file ./ansible_vault_secret
 
       - name: Test the playbook.
         run: bin/macos-setup update
