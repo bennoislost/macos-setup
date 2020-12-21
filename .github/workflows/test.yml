@@ -43,6 +43,16 @@ jobs:
         run: |
           sudo rm -rf /Applications/Firefox.app
           sudo rm -rf /Applications/Google\ Chrome.app
+
       - name: Install dependencies.
         run: bin/macos-setup bootstrap
 
+      - name: Set up the test environment.
+        run: |
+          ansible-galaxy install -r requirements.yml
+
+      - name: Test the playbook's syntax.
+        run: ansible-playbook macos-setup-playbook.yml --syntax-check
+
+      - name: Test the playbook.
+        run: bin/macos-setup update
