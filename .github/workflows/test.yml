@@ -47,10 +47,6 @@ jobs:
       - name: Install dependencies.
         run: bin/macos-setup bootstrap
 
-      - name: Set up the test environment.
-        run: |
-          ansible-galaxy install -r requirements.yml
-
       - name: Define Ansible Vault secret.
         shell: bash
         env:
@@ -58,11 +54,8 @@ jobs:
         run: |
           echo "$VAULT_SECRET" > ansible_vault_secret
 
-      - name: Test the playbook's syntax.
-        run: ansible-playbook macos-setup-playbook.yml --syntax-check --vault-password-file ./ansible_vault_secret
-
       - name: Test the playbook.
-        run: bin/macos-setup update
+        run: bin/macos-setup ci
 
       - name: Remove Ansible Vault secret.
         run: |

@@ -78,6 +78,16 @@ HEREDOC
     system "ansible-galaxy install -r #{requirements}"
     system "ansible-playbook #{playbook} -i #{inventory} -K --vault-password-file ./ansible_vault_secret"
   end
+
+  def ci(args)
+    requirements = File.expand_path(File.join(__dir__, '..', 'requirements.yml'))
+    playbook = File.expand_path(File.join(__dir__, '..', 'macos-setup-playbook.yml'))
+    inventory = File.expand_path(File.join(__dir__, '..', 'inventory'))
+
+    system "ansible-galaxy install -r #{requirements}"
+    system "ansible-playbook #{playbook} -i #{inventory} --syntax-check  --vault-password-file ./ansible_vault_secret"
+    system "ansible-playbook #{playbook} -i #{inventory} -vvv -K --vault-password-file ./ansible_vault_secret"
+  end
 end
 
 MacSetup.new(ARGV) if __FILE__==$0
