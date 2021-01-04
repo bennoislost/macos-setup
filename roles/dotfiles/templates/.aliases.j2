@@ -1,0 +1,87 @@
+#!/usr/bin/env bash
+
+#
+# {{ ansible_managed }}
+#
+
+#######################################################
+# Directory Browsing
+#######################################################
+
+# Fast navigation...
+alias ..="cd  .."
+
+# List current directories @TODO: pass arguments?
+alias dir="ls -lah | grep '^d'"
+
+# Safe-ish RM
+alias rm="rm -ri"
+
+# Nice list
+alias ll="ls -lah"
+
+# Sites directory
+alias sites="cd ~/Sites"
+
+# Projects directory
+alias projects="cd ~/Projects"
+
+
+#######################################################
+# Git SCM
+#######################################################
+
+# really pisses me off
+alias gti='git '
+
+#######################################################
+# Networking
+#######################################################
+
+# IP Addresses
+alias localip="ipconfig getifaddr en0"
+alias remoteip="dig +short myip.opendns.com @resolver1.opendns.com"
+alias ips="ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[0-9]\+\)\|[a-fA-F0-9:]\+\)' | awk '{ sub(/inet6? (addr:)? ?/, \"\"); print }'"
+
+# Show active network interfaces
+alias ifactive="ifconfig | pcregrep -M -o '^[^\t:]+:([^\n]|\n\t)*status: active'"
+
+# flush dns cache
+alias flushdns="dscacheutil -flushcache && killall -HUP mDNSResponder"
+
+# One of @janmoesen’s ProTip™s
+# Perform basic UA requests from terminal
+for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do
+    alias "$method"="lwp-request -m '$method'"
+done
+
+#######################################################
+# Applications
+#######################################################
+
+# Vagrant
+alias vag="vagrant"
+
+#######################################################
+# OSX
+#######################################################
+
+# Show/hide hidden files in Finder
+alias show="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"
+alias hide="defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder"
+
+# Show/Hide the desktop... always useful
+alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
+alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
+
+
+#######################################################
+# Util
+#######################################################
+
+# URL-encode strings
+alias urlencode='python -c "import sys, urllib as ul; print ul.quote_plus(sys.argv[1]);"'
+
+# Merge PDF files
+# Usage: `mergepdf -o output.pdf input{1,2,3}.pdf`
+alias mergepdf='/System/Library/Automator/Combine\ PDF\ Pages.action/Contents/Resources/join.py'

@@ -1,0 +1,7 @@
+---
+mackup_config_storage_engine: file_system
+mackup_config_storage_path: mackup-root
+mackup_config_storage_directory: Mackup
+
+mackup_config_applications: []
+mackup_config_ignored_applications: []

@@ -1,0 +1,20 @@
+---
+homebrew_taps:
+  - homebrew/bundle
+  - homebrew/cask
+  - homebrew/cask-versions
+  - homebrew/core
+  - homebrew/services
+  - hudochenkov/sshpass
+
+homebrew_packages:
+  - mackup
+  # - mailhog
+  # - nginx
+  - php
+  - php@7.4
+  - starship
+
+homebrew_casks:
+  - iterm2
+  - google-chrome

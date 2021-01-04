@@ -1,0 +1,76 @@
+---
+# - name: Setup MacOS Keyboard defaults
+#   osx_defaults:
+#     domain: "{{ item.domain }}"
+#     key: "{{ item.key }}"
+#     type: "{{ item.type }}"
+#     value: "{{ item.value }}"
+#     state: "{{ item.state | default('present') }}"
+#   with_items:
+#     # Enable FULL keyboard access
+#     - domain: NSGlobalDomain
+#       key: AppleKeyboardUIMode
+#       type: int
+#       value: 3
+#     # Use scroll gesture with the Ctrl (^) modifier key to zoom
+#     - domain: com.apple.universalaccess
+#       key: closeViewScrollWheelToggle
+#       type: bool
+#       value: true
+#     - domain: com.apple.universalaccess
+#       key: HIDScrollZoomModifierMask
+#       type: int
+#       value: 262144
+#     # Follow the keyboard focus while zoomed in
+#     - domain: com.apple.universalaccess
+#       key: closeViewZoomFollowsFocus
+#       type: bool
+#       value: true
+
+- name: Setup MacOS Trackpad defaults
+  osx_defaults:
+    domain: "{{ item.domain }}"
+    host: "{{ item.host | default(omit) }}"
+    key: "{{ item.key }}"
+    type: "{{ item.type }}"
+    value: "{{ item.value }}"
+    state: "{{ item.state | default('present') }}"
+  with_items:
+    # Map bottom right corner to right-click
+    - domain: com.apple.driver.AppleBluetoothMultitouch.trackpad
+      key: TrackpadCornerSecondaryClick
+      type: int
+      value: 2
+    - domain: com.apple.driver.AppleBluetoothMultitouch.trackpad
+      key: TrackpadRightClick
+      type: bool
+      value: true
+    - host: currentHost
+      domain: NSGlobalDomain
+      key: com.apple.trackpad.trackpadCornerClickBehavior
+      type: int
+      value: 1
+    - host: currentHost
+      domain: NSGlobalDomain
+      key: com.apple.trackpad.enableSecondaryClick
+      type: bool
+      value: true
+    # Disable natural scrolling > Snow Leopard
+    - domain: NSGlobalDomain
+      key: com.apple.swipescrolldirection
+      type: bool
+      value: false
+
+- name: Setup MacOS Bluetooth defaults
+  osx_defaults:
+    domain: "{{ item.domain }}"
+    key: "{{ item.key }}"
+    type: "{{ item.type }}"
+    value: "{{ item.value }}"
+    state: "{{ item.state | default('present') }}"
+  with_items:
+    # Increase sound quality for Bluetooth headphones/headsets
+    - domain: com.apple.BluetoothAudioAgent
+      key: Apple Bitpool Min (editable)
+      type: int
+      value: 40

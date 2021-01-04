@@ -1,0 +1,16 @@
+---
+- name: Setup MacOS General appearance defaults
+  osx_defaults:
+    domain: NSGlobalDomain
+    key: "{{ item.key }}"
+    type: "{{ item.type }}"
+    value: "{{ item.value }}"
+    state: "{{ item.state | default('present') }}"
+  notify:
+    - Restart MenuBar
+    - Restart Dock
+  with_items:
+    # Dark mode
+    - key: AppleInterfaceStyle
+      type: string
+      value: Dark

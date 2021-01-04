@@ -1,0 +1,8 @@
+---
+composer_auth_github_token:
+composer_auth_json: |
+  {
+      "github-oauth": {
+          "github.com": "{{ composer_auth_github_token }}"
+      }
+  }

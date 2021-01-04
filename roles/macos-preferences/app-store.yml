@@ -1,0 +1,27 @@
+---
+- name: Setup MacOS App Store defaults
+  osx_defaults:
+    domain: "{{ item.domain | default('com.apple.SoftwareUpdate') }}"
+    key: "{{ item.key }}"
+    type: "{{ item.type }}"
+    value: "{{ item.value }}"
+    state: "{{ item.state | default('present') }}"
+  notify: Restart App Store
+  with_items:
+    # Disable the automatic update check
+    - key: AutomaticCheckEnabled
+      type: bool
+      value: false
+    # Don't download
+    - key: AutomaticDownload
+      type: int
+      value: 0
+    # Disable download apps purchased on other Macs
+    - key: ConfigDataInstall
+      type: int
+      value: 0
+    # Turn off app auto-update
+    - domain: com.apple.commerce
+      key: AutoUpdate
+      type: bool
+      value: false

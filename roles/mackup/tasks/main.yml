@@ -1,0 +1,13 @@
+---
+- name: Apply mackup configuration
+  template:
+    src: "mackup.cfg.j2"
+    dest: "~/.mackup.cfg"
+    mode: 0644
+
+- name: Create Mackup directory for file system storage
+  file:
+    path: "{{ mackup_config_storage_path }}"
+    state: directory
+    mode: 0700
+  when: mackup_config_storage_engine == "file_system"

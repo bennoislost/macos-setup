@@ -1,0 +1,15 @@
+#
+# {{ ansible_managed }}
+#
+
+Host *
+    ServerAliveInterval 60
+    UseKeychain yes
+    AddKeysToAgent yes
+
+Host 127.0.0.1
+    UserKnownHostsFile /dev/null
+    StrictHostKeyChecking no
+
+
+Include ~/.ssh/config.local

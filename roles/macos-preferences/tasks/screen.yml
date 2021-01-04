@@ -1,0 +1,34 @@
+---
+- name: Setup MacOS Screen defaults
+  osx_defaults:
+    domain: "{{ item.domain }}"
+    key: "{{ item.key }}"
+    type: "{{ item.type }}"
+    value: "{{ item.value }}"
+    state: "{{ item.state | default('present') }}"
+  notify: Restart Finder
+  with_items:
+    # Require password after sleep or screen saver
+    - domain: com.apple.screensaver
+      key: askForPassword
+      type: int
+      value: 1
+    - domain: com.apple.screensaver
+      key: askForPasswordDelay
+      type: int
+      value: 0
+    # Save screenshots to the desktop
+    - domain: com.apple.screencapture
+      key: location
+      type: string
+      value: ${HOME}/Desktop
+    # Save screenshots in PNG format (other options: BMP, GIF, JPG, PDF, TIFF)
+    - domain: com.apple.screencapture
+      key: type
+      type: string
+      value: png
+    # Disable shadow in screenshots
+    - domain: com.apple.screencapture
+      key: disable-shadow
+      type: bool
+      value: true

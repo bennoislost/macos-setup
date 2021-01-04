@@ -1,0 +1,20 @@
+---
+- name: Check items currently in the Menu Bar
+  command: "defaults read com.apple.systemuiserver menuExtras"
+  register: menu_bar_result
+  changed_when: no
+
+- name: Show Bluetooth in menu bar
+  command: defaults write com.apple.systemuiserver menuExtras -array-add "/System/Library/CoreServices/Menu Extras/Bluetooth.menu"
+  when: "'Bluetooth.menu' not in menu_bar_result.stdout"
+  notify: Restart MenuBar
+
+- name: Show AirPort in menu bar
+  command: defaults write com.apple.systemuiserver menuExtras -array-add "/System/Library/CoreServices/Menu Extras/AirPort.menu"
+  when: "'AirPort.menu' not in menu_bar_result.stdout"
+  notify: Restart MenuBar
+
+- name: Show Volume in menu bar
+  command: defaults write com.apple.systemuiserver menuExtras -array-add "/System/Library/CoreServices/Menu Extras/Volume.menu"
+  when: "'Volume.menu' not in menu_bar_result.stdout"
+  notify: Restart MenuBar

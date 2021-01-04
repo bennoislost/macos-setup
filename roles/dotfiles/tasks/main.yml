@@ -1,4 +1,9 @@
 ---
-- name: Install dotfiles
-  shell: >
-         cd; curl -#L https://github.com/bennoislost/dotfiles/zipball/master | tar -xzv --strip-components 1 --exclude=README.md;
+- name: Set the shell to bash
+  user:
+    name: "{{ ansible_user_id }}"
+    shell: /bin/bash
+
+- include: starship.yml
+- include: dotfiles.yml
+- include: config_files.yml

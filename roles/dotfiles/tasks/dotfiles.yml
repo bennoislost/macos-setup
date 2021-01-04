@@ -1,0 +1,59 @@
+---
+- name: Create .bash_profile
+  template:
+    src: .bash_profile.j2
+    dest: ~/.bash_profile
+    mode: 0644
+
+- name: Create .bashrc
+  template:
+    src: .bashrc.j2
+    dest: ~/.bashrc
+    mode: 0644
+
+- name: Create .exports
+  template:
+    src: .exports.j2
+    dest: ~/.exports
+    mode: 0644
+
+- name: Create .aliases
+  template:
+    src: .aliases.j2
+    dest: ~/.aliases
+    mode: 0644
+
+- name: Create .functions
+  template:
+    src: .functions.j2
+    dest: ~/.functions
+    mode: 0644
+
+- name: Ensure template .path file exists
+  copy:
+    content: |
+      #
+      # Template
+      #
+
+      PATH=/usr/local/opt/php@7.4/bin:$PATH
+      PATH=/usr/local/sbin:$PATH
+      PATH=~/.composer/vendor/bin:$PATH
+      PATH=/usr/local/opt/openssl/bin:$PATH
+
+      export PATH
+
+    dest: "~/.paths"
+    force: no
+    mode: 0644
+
+- name: Ensure template .path file exists
+  copy:
+    content: |
+      #
+      # Template
+      #
+
+    dest: "~/.extra"
+    force: no
+    mode: 0644

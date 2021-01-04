@@ -1,0 +1,53 @@
+---
+- name: Setup MacOS Finder defaults
+  osx_defaults:
+    domain: "{{ item.domain | default('com.apple.Finder') }}"
+    key: "{{ item.key }}"
+    type: "{{ item.type }}"
+    value: "{{ item.value }}"
+    state: "{{ item.state | default('present') }}"
+  notify: Restart Finder
+  with_items:
+    # Display status bar on windows
+    - key: ShowStatusBar
+      type: bool
+      value: true
+    # Always use list view for finder windows
+    - key: FXPreferredViewStyle
+      type: string
+      value: Nlsv
+    # Show icons for hard drives, servers, and removable media on the desktop
+    - key: ShowExternalHardDrivesOnDesktop
+      type: bool
+      value: true
+    - key: ShowHardDrivesOnDesktop
+      type: bool
+      value: true
+    - key: ShowMountedServersOnDesktop
+      type: bool
+      value: true
+    - key: ShowRemovableMediaOnDesktop
+      type: bool
+      value: true
+    # Display hidden files by default
+    - key: AppleShowAllFiles
+      type: bool
+      value: true
+    # Disable warning when changing file extensions
+    - key: FXEnableExtensionChangeWarning
+      type: bool
+      value: false
+    # Display file name extensions
+    - domain: NSGlobalDomain
+      key: AppleShowAllExtensions
+      type: bool
+      value: false
+    # Enable text selection in quick look
+    - key: QLEnableTextSelection
+      type: bool
+      value: true
+    # Enable text selection in quick look
+    - domain: com.apple.desktopservices
+      key: DSDontWriteNetworkStores
+      type: bool
+      value: true

@@ -1,5 +1,12 @@
+---
 - name: Create Brewfile
   template:
     src: Brewfile.j2
     dest: ~/Brewfile
     mode: 0644
+
+- name: Install from Brewfile.
+  shell: >
+    brew bundle --no-upgrade
+  args:
+    chdir: "{{ ansible_env.HOME }}"

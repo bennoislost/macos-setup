@@ -1,0 +1,10 @@
+---
+- include: activity-monitor.yml
+- include: appearance.yml
+- include: app-store.yml
+- include: devices.yml
+- include: menu-bar.yml
+- include: hot-corners.yml
+- include: dock.yml
+- include: finder.yml
+- include: screen.yml

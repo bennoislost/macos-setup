@@ -1,0 +1,12 @@
+---
+- name: Create Starship prompt directory
+  file:
+    path: "~/.config"
+    state: directory
+    mode: 0700
+
+- name: Create Starship config file
+  template:
+    src: starship.toml.j2
+    dest: ~/.config/starship.toml
+    mode: 0644

@@ -1,0 +1,18 @@
+---
+- name: Find PHP versions
+  find:
+    paths: /usr/local/etc/php/
+    patterns: 'conf.d'
+    recurse: true
+    use_regex: true
+    file_type: directory
+  register: php_versions
+
+- name: Ensure template PHP directive file exists
+  template:
+    src: 999-developer.ini.j2
+    dest: "{{ item.path }}/999-developer.ini"
+    mode: 0644
+  loop: "{{ php_versions.files }}"
+
+- include_tasks: composer.yml

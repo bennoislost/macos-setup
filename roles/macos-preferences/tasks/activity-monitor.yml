@@ -1,0 +1,29 @@
+---
+- name: Setup MacOS Activity Monitor defaults
+  osx_defaults:
+    domain: com.apple.ActivityMonitor
+    key: "{{ item.key }}"
+    type: "{{ item.type }}"
+    value: "{{ item.value }}"
+    state: "{{ item.state | default('present') }}"
+  notify: Restart Activity Monitor
+  with_items:
+    # Display main window when opening
+    - key: OpenMainWindow
+      type: bool
+      value: true
+    # CPU usage in Dock icon
+    - key: IconType
+      type: int
+      value: 5
+    # Show all processes
+    - key: ShowCategory
+      type: int
+      value: 0
+    # Sort by CPU usage
+    - key: SortColumn
+      type: string
+      value: CPUUsage
+    - key: SortDirection
+      type: int
+      value: 0

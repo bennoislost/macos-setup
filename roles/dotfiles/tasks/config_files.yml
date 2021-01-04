@@ -1,0 +1,48 @@
+---
+- name: Create .curlrc file
+  template:
+    src: .curlrc.j2
+    dest: ~/.curlrc
+    mode: 0644
+
+- name: Create .editorconfig file
+  template:
+    src: .editorconfig.j2
+    dest: ~/.editorconfig
+    mode: 0644
+
+- name: Create .gemrc file
+  template:
+    src: .gemrc.j2
+    dest: ~/.gemrc
+    mode: 0644
+
+- name: Create .gitignore file
+  template:
+    src: .gitignore.j2
+    dest: ~/.gitignore
+    mode: 0644
+
+- name: Create .gitconfig file
+  template:
+    src: .gitconfig.j2
+    dest: ~/.gitconfig
+    mode: 0644
+
+- name: Create .screenrc file
+  template:
+    src: .gitconfig.j2
+    dest: ~/.gitconfig
+    mode: 0644
+
+- name: Create .tmate.conf file
+  template:
+    src: .tmate.conf.j2
+    dest: ~/.tmate.conf
+    mode: 0644
+
+- name: Create .wgetrc file
+  template:
+    src: .wgetrc.j2
+    dest: ~/.wgetrc
+    mode: 0644

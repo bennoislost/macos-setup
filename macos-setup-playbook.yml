@@ -1,9 +1,24 @@
 ---
 - hosts: all
-  connection: local
+
+  environment:
+    PATH: /usr/local/bin:/usr/local/sbin:{{ ansible_env.PATH }}
+
   roles:
-    - { role: dotfiles }
-    - { role: homebrew }
-    - { role: geerlingguy.homebrew }
+    - role: elliotweiser.osx-command-line-tools
+      tags: ['xcode', 'node', 'homebrew', 'dotfiles']
+    - role: node
+      tags: ['node', 'nvm']
+    - role: dotfiles
+      tags: ['bash', 'starship', 'shell', 'dotfiles']
+    - role: homebrew
+      tags: homebrew
     - { role: preferences }
-    - { role: ssh }
+    - role: ssh
+      tags: ['ssh']
+    - role: mackup
+      tags: ['mackup', 'backup']
+    - role: php
+      tags: ['php']
+    - role: macos-preferences
+      tags: ['macos']

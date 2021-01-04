@@ -1,0 +1,38 @@
+---
+- name: Setup MacOS Hot Corner defaults
+  osx_defaults:
+    domain: com.apple.dock
+    key: "{{ item.key }}"
+    type: "{{ item.type }}"
+    value: "{{ item.value }}"
+    state: "{{ item.state | default('present') }}"
+  notify: Restart Dock
+  with_items:
+    # Top left screen corner - Desktop
+    - key: wvous-tl-corner
+      type: int
+      value: 4
+    - key: wvous-tl-modifier
+      type: int
+      value: 0
+   # Top right screen corner - Mission Control
+    - key: wvous-tr-corner
+      type: int
+      value: 2
+    - key: wvous-tr-modifier
+      type: int
+      value: 0
+    # Bottom left screen corner - Screen Saver
+    - key: wvous-bl-corner
+      type: int
+      value: 5
+    - key: wvous-bl-modifier
+      type: int
+      value: 0
+    # Bottom right screen corner - Application Windows
+    - key: wvous-br-corner
+      type: int
+      value: 3
+    - key: wvous-br-modifier
+      type: int
+      value: 0

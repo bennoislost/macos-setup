@@ -1,0 +1,18 @@
+#
+# {{ ansible_managed }}
+#
+
+[storage]
+engine = {{ mackup_config_storage_engine }}
+path = {{ mackup_config_storage_path }}
+directory = {{ mackup_config_storage_directory }}
+
+[applications_to_sync]
+{% for item in mackup_config_applications %}
+{{ item }}
+{% endfor %}
+
+[applications_to_ignore]
+{% for item in mackup_config_ignored_applications %}
+{{ item }}
+{% endfor %}

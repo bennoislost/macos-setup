@@ -1,0 +1,30 @@
+---
+- name: Setup MacOS Dock defaults
+  osx_defaults:
+    domain: com.apple.dock
+    key: "{{ item.key }}"
+    type: "{{ item.type }}"
+    value: "{{ item.value }}"
+    state: "{{ item.state | default('present') }}"
+  notify: Restart Dock
+  with_items:
+    # Never auto hide hide the dock
+    - key: autohide
+      type: bool
+      value: true
+    # Remove the auto-hiding Dock delay
+    - key: autohide-delay
+      type: float
+      value: 0
+    # Display dashboard as a space
+    - key: dashboard-in-overlay
+      type: bool
+      value: false
+    # Set default size of Dock items
+    - key: tilesize
+      type: int
+      value: 35
+    # Don’t show recent applications in Dock
+    - key: show-recents
+      type: bool
+      value: false
