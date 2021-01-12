@@ -1,10 +1,13 @@
 #
 # {{ ansible_managed }}
 #
+[init]
+    defaultBranch = main
 
 [user]
     name = Ben McManus
     email = user@server.loc
+
 [alias]
     # List all aliases
     aliases = "!git config --list | grep -i alias | cut -c 7-"
@@ -110,9 +113,11 @@
 
     # List all un tracked files
     ut = ls-files --others --exclude-standard
+
 [include]
     # Local config file for tokens, emails, etc
     path = ~/.gitconfig.local
+
 [core]
     excludesfile = "~/.gitignore"
 
@@ -121,26 +126,35 @@
     # Make `git rebase` safer on OS X
     # More info: <http://www.git-tower.com/blog/make-git-rebase-safe-on-osx/>
     trustctime = false
+
 [apply]
     # Detect whitespace errors when applying a patch
     whitespace = fix
+
 [help]
     # Automatically correct and execute mistyped commands
     autocorrect = 1
+
 [grep]
     linenumber = true
+
 [color]
     ui = auto
+
 [diff]
     tool = phpstorm
 
     # Detect copies as well as renames
     renames = copies
+
 [difftool]
     prompt = false
+
 [difftool.phpstorm]
     cmd = /usr/local/bin/phpstorm diff "$LOCAL" "$REMOTE"
+
 [merge]
     tool = phpstorm
+
 [mergetool.phpstorm]
     cmd = /usr/local/bin/phpstorm merge "$LOCAL" "$REMOTE" "$BASE" "$MERGED"
