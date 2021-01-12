@@ -10,8 +10,8 @@
 
 - name: Ensure template PHP directive file exists
   template:
-    src: 999-developer.ini.j2
-    dest: "{{ item.path }}/999-developer.ini"
+    src: zzz-developer.ini.j2
+    dest: "{{ item.path }}/zzz-developer.ini"
     mode: 0644
   loop: "{{ php_versions.files }}"
 

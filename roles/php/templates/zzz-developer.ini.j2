@@ -1,0 +1,19 @@
+#
+# {{ ansible_managed }}
+#
+error_reporting = E_ALL ^ E_NOTICE ^ E_WARNING
+display_errors = 1
+
+zend_extension="xdebug.so"
+xdebug.mode=debug,develop
+xdebug.file_link_format="phpstorm://open?file=%f&line=%l"
+xdebug.cli_color=2
+
+# When it all goes wrong
+#xdebug.log=/tmp/xdebug.log
+#xdebug.log_level=10
+
+
+opcache.enable = Off
+
+max_file_uploads = 100

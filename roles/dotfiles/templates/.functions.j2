@@ -84,11 +84,10 @@ function symlinks-broken-rm() {
 
 # Enable Xdebug extension for php-cli scripts
 function xdebug-listen() {
-    export XDEBUG_CONFIG="idekey=PHPSTORM"
+    export XDEBUG_SESSION=1
 }
 
 # Disable Xdebug extension for php-cli scripts
-function xdebug-stoplistening()
-{
-    unset XDEBUG_CONFIG
+function xdebug-stoplistening() {
+    unset XDEBUG_SESSION
 }
