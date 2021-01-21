@@ -2,6 +2,9 @@
 # {{ ansible_managed }}
 #
 
+Include ~/.ssh/config.local
+Include ~/.ssh/customer-config.d/*.conf
+
 Host *
     ServerAliveInterval 60
     UseKeychain yes
@@ -10,6 +13,3 @@ Host *
 Host 127.0.0.1
     UserKnownHostsFile /dev/null
     StrictHostKeyChecking no
-
-
-Include ~/.ssh/config.local

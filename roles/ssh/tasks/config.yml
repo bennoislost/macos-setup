@@ -5,6 +5,12 @@
     dest: ~/.ssh/config
     mode: 0644
 
+- name: Create ~/.ssh/customer-config.d directory exists
+  file:
+    path: "~/.ssh/customer-config.d"
+    state: directory
+    mode: 0700
+
 - name: Ensure template ~/.ssh/config.local file exists
   copy:
     content: ""
