@@ -43,5 +43,7 @@ elif [ -f /etc/bash_completion ]; then
     source /etc/bash_completion;
 fi;
 
+complete -o "default" -o "nospace" -W "$(grep "^Host" ~/.ssh/config  ~/.ssh/config.local ~/.ssh/customer-config.d/*.conf 2>/dev/null | grep -v "[?*]" | cut -d " " -f2- | tr ' ' '\n')" scp sftp ssh;
+
 # enable starship prompt
 eval "$(starship init bash)"
